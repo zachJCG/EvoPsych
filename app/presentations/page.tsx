@@ -31,14 +31,14 @@ export default function PresentationsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Service 03 / Presentations"
+        eyebrow="Service 03"
         title={
           <>
-            Speaking engagements, grounded<br />
-            in <span className="italic gold-text">current research</span>.
+            Speaking, grounded in<br />
+            <span className="italic gold-text">current research</span>.
           </>
         }
-        intro="Engage a professional who will understand what you need, adapt the materials to include the most up-to-date research, and present in an organized, genuine, and compassionate way."
+        intro="Tailored to your audience. Adapted to your goals. Delivered with clarity and care."
       />
 
       {/* WHO IT'S FOR */}

@@ -51,14 +51,14 @@ export default function IndividualTherapyPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Service 01 / Individual Therapy"
+        eyebrow="Service 01"
         title={
           <>
-            Therapy that&apos;s honest,<br />
-            <span className="italic gold-text">integrated</span>, and yours.
+            Honest, <span className="italic gold-text">integrated</span><br />
+            individual therapy.
           </>
         }
-        intro="Each 53-minute session — in person or virtual — is crafted for an authentic connection. The work uses humor, encouragement, and gentle challenges to provoke insight in a setting that fosters healing and growth."
+        intro="53-minute sessions, in person or virtual. Humor, encouragement, and gentle challenges in a space designed for real growth."
       />
 
       {/* WHAT WE TREAT */}

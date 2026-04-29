@@ -33,14 +33,14 @@ export default function TestingPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Service 02 / Psychological Testing"
+        eyebrow="Service 02"
         title={
           <>
             Assessments that bring<br />
-            <span className="italic gold-text">clarity</span> to the picture.
+            <span className="italic gold-text">clarity</span>.
           </>
         }
-        intro="Psychological testing measures social, emotional, and cognitive functioning — providing diagnostic clarity, recommendations, and a path forward when the way ahead feels unclear."
+        intro="Diagnostic clarity, accommodations, and treatment direction — when the way ahead feels unclear."
       />
 
       {/* WHEN TO CONSIDER TESTING */}
