@@ -1,55 +1,83 @@
+import Link from "next/link";
 import Logo from "./Logo";
+import { site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="relative mt-32 border-t border-gold-500/15 bg-forest-900">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-12">
-        <div className="grid gap-12 md:grid-cols-3">
-          <div>
-            <Logo withWordmark />
-            <p className="mt-6 max-w-xs text-sm leading-relaxed text-cream/65">
-              Integrated, client-centered psychological services for adolescents,
-              adults, and older adults — in person and virtually.
+    <footer className="bg-forest-deep text-parchment">
+      <div className="mx-auto max-w-wrap px-6 py-16 lg:px-10">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-5">
+            <Logo dark />
+            <p className="max-w-xs text-sm leading-relaxed text-parchment/60">
+              {site.tagline}
             </p>
           </div>
 
           <div>
-            <h4 className="text-[11px] uppercase tracking-[0.28em] text-gold-300">
-              Office
-            </h4>
-            <div className="mt-4 space-y-1 text-sm text-cream/80">
-              <div>323 W. Fifth St. #1N</div>
-              <div>Cincinnati, OH 45202</div>
-              <div className="pt-3">
-                <a href="tel:5132017776" className="link-gold">(513) 201-7776</a>
-              </div>
-              <div>
-                <a href="mailto:dr.saganking@evolutionpsych.com" className="link-gold">
-                  dr.saganking@evolutionpsych.com
-                </a>
-              </div>
-            </div>
+            <h3 className="eyebrow text-gold-soft">Visit</h3>
+            <address className="mt-4 text-sm not-italic leading-relaxed text-parchment/80">
+              {site.address.street}
+              <br />
+              {site.address.city}, {site.address.state} {site.address.zip}
+            </address>
+            <p className="mt-2 text-xs text-parchment/50">
+              Office is ADA accessible · {site.hours}
+            </p>
           </div>
 
           <div>
-            <h4 className="text-[11px] uppercase tracking-[0.28em] text-gold-300">
-              Licensure
-            </h4>
-            <div className="mt-4 space-y-1 text-sm text-cream/80">
-              <div>Dr. Sagan King, Psy.D.</div>
-              <div>Licensed Psychologist</div>
-              <div className="pt-2 text-cream/60">Ohio &middot; North Carolina</div>
-            </div>
+            <h3 className="eyebrow text-gold-soft">Reach Us</h3>
+            <ul className="mt-4 space-y-2 text-sm text-parchment/80">
+              <li>
+                <a href={site.phoneHref} className="link-quiet">
+                  {site.phone}
+                </a>
+              </li>
+              <li className="text-parchment/60">Fax: {site.fax}</li>
+              <li>
+                <a href={`mailto:${site.email}`} className="link-quiet break-all">
+                  {site.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={site.portalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-quiet text-gold-soft"
+                >
+                  Client portal →
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="eyebrow text-gold-soft">Explore</h3>
+            <ul className="mt-4 space-y-2 text-sm text-parchment/80">
+              {site.nav.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="link-quiet">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="gold-rule mt-14" />
-
-        <div className="mt-6 flex flex-col items-start justify-between gap-2 text-[11px] uppercase tracking-[0.22em] text-cream/45 md:flex-row md:items-center">
-          <div>© {new Date().getFullYear()} Evolve Psychological Services</div>
-          <div>
-            In emergencies, call 988 or 911. This site is not for crisis support.
-          </div>
+        <div className="mt-14 border-t border-parchment/10 pt-8">
+          <p className="text-xs leading-relaxed text-parchment/45">
+            If you are experiencing a mental health emergency, call 911 or dial
+            988 (Suicide &amp; Crisis Lifeline). This website is not monitored
+            for crisis support and is not a substitute for professional care.
+          </p>
+          <p className="mt-4 text-xs text-parchment/45">
+            © {new Date().getFullYear()} {site.name} ·{" "}
+            {site.provider.name}, {site.provider.credentials} ·{" "}
+            {site.provider.licensure}
+          </p>
         </div>
       </div>
     </footer>
