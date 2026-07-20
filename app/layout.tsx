@@ -1,18 +1,63 @@
 import type { Metadata } from "next";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { site } from "@/lib/site";
+
+const display = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  axes: ["opsz"],
+  style: ["normal", "italic"],
+});
+
+const sans = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
-  title: "Evolve Psychological Services | Dr. Sagan King, Psy.D.",
-  description:
-    "Integrated psychological services in Cincinnati, OH. Individual therapy, psychological testing, and professional presentations led by Dr. Sagan King, Psy.D.",
-  openGraph: {
-    title: "Evolve Psychological Services",
-    description:
-      "Integrated, client-centered therapy and testing in Cincinnati, OH.",
-    type: "website",
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} | Dr. Sagan King, Psy.D. | Cincinnati, OH`,
+    template: `%s | ${site.name}`,
   },
+  description: site.description,
+  openGraph: {
+    title: site.name,
+    description: site.description,
+    url: site.url,
+    siteName: site.name,
+    type: "website",
+    locale: "en_US",
+  },
+  robots: { index: true, follow: true },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Psychologist",
+  name: site.name,
+  description: site.description,
+  url: site.url,
+  telephone: site.phone,
+  faxNumber: site.fax,
+  email: site.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.state,
+    postalCode: site.address.zip,
+    addressCountry: "US",
+  },
+  founder: {
+    "@type": "Person",
+    name: `${site.provider.name}, ${site.provider.credentials}`,
+    jobTitle: site.provider.title,
+  },
+  openingHours: "Mo-Sa",
 };
 
 export default function RootLayout({
@@ -21,10 +66,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-forest-800 text-cream">
-        <Nav />
-        <main className="relative">{children}</main>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${display.variable} ${sans.variable}`}
+    >
+      <body className="min-h-screen font-sans text-ink">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <Header />
+        <main id="main">{children}</main>
         <Footer />
       </body>
     </html>

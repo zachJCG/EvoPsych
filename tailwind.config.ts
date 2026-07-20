@@ -4,44 +4,49 @@ const config: Config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
-        // Pulled from Sagan's business card
+        // Brand palette drawn from the practice's forest + brushed-gold identity,
+        // rebuilt for a light, warm, editorial layout.
+        ink: {
+          DEFAULT: "#1c2b23", // deep forest ink — primary text
+          soft: "#3d4f45",
+          muted: "#69796f",
+          faint: "#93a099",
+        },
+        parchment: {
+          DEFAULT: "#f7f4ec", // warm ivory page background
+          deep: "#efeadd", // tinted section background
+          card: "#fdfcf8", // raised card surface
+        },
         forest: {
-          50: "#f3f5f3",
-          100: "#dde3dd",
-          200: "#b8c4b9",
-          300: "#8ea18f",
-          400: "#647e6a",
-          500: "#3f5944",
-          600: "#2f4334",
-          700: "#243329",
-          800: "#1a2620",  // primary background
-          900: "#121a16",
+          DEFAULT: "#22382c", // deep surfaces (footer, dark bands)
+          deep: "#16261d",
+          line: "#d9d4c5", // hairline rules on parchment
         },
         gold: {
-          50: "#fbf6e6",
-          100: "#f4e9bf",
-          200: "#ead693",
-          300: "#dec068",
-          400: "#cba844",
-          500: "#b08c2e",   // brushed gold from card
-          600: "#8c6e22",
-          700: "#6a521a",
-          800: "#4a3812",
+          DEFAULT: "#a3822b", // brushed gold accent
+          deep: "#8c6e22",
+          soft: "#c2a558",
+          wash: "#f1e8d2", // pale gold tint for chips/washes
         },
-        cream: "#f5efe1",
-        bark: "#5a3d2b",
-        sage: "#a8b89a",
+        sage: {
+          DEFAULT: "#a8b89a",
+          wash: "#e9ede2",
+        },
       },
       fontFamily: {
-        display: ['"Cormorant Garamond"', "Georgia", "serif"],
-        sans: ['"Inter Tight"', "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+      },
+      maxWidth: {
+        wrap: "72rem",
       },
       letterSpacing: {
-        widest: "0.25em",
+        caps: "0.22em",
       },
     },
   },
